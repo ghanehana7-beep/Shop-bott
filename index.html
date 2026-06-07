@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPN_AH Cyber Store</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #0d0d11; /* پس‌زمینه مشکی عمیق */
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .header {
+            margin-bottom: 35px;
+            padding: 10px;
+        }
+        .logo {
+            font-size: 55px;
+            text-shadow: 0 0 20px #39ff14;
+            animation: pulse 2s infinite alternate;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: 900;
+            margin-top: 15px;
+            color: #39ff14; /* سبز نئونی خفن */
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            font-size: 13px;
+            color: #888888;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .card {
+            background: linear-gradient(145deg, #141419, #1b1b22);
+            border: 1px solid rgba(57, 255, 20, 0.15); /* خط دور سبز ملایم */
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            border-color: #39ff14;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+            transform: translateY(-2px);
+        }
+        .card-title {
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        .card-price {
+            font-size: 18px;
+            color: #39ff14;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background-color: rgba(57, 255, 20, 0.07);
+            padding: 6px 18px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px dashed rgba(57, 255, 20, 0.3);
+        }
+        .buy-btn {
+            background: linear-gradient(90deg, #1fbf0c, #39ff14);
+            color: #000000; /* متن مشکی روی دکمه سبز برای خوانایی و خفنی */
+            border: none;
+            padding: 14px 25px;
+            border-radius: 12px;
+            font-weight: 900;
+            cursor: pointer;
+            width: 90%;
+            font-size: 16px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(57, 255, 20, 0.4);
+            transition: all 0.2s ease;
+        }
+        .buy-btn:active {
+            transform: scale(0.96);
+            box-shadow: 0 2px 5px rgba(57, 255, 20, 0.2);
+        }
+
+        /* استایل فاکتور پرداخت نئونی */
+        #payment-invoice {
+            display: none; /* در حالت عادی مخفیه */
+            background: #141419;
+            border: 2px solid #39ff14;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 380px;
+            box-shadow: 0 0 25px rgba(57, 255, 20, 0.3);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            z-index: 1000;
+        }
+        .invoice-title {
+            color: #39ff14;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .invoice-details {
+            background: #1b1b22;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 15px;
+            text-align: right;
+            line-height: 1.8;
+        }
+        .card-number-box {
+            background: #0d0d11;
+            border: 1px dashed #39ff14;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #39ff14;
+            margin: 15px 0;
+            direction: ltr; /* نمایش صحیح شماره کارت */
+        }
+        .hint {
+            font-size: 12px;
+            color: #aaaaaa;
+            margin-top: 15px;
+            line-height: 1.5;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-content">
+        <div class="header">
+            <div class="logo">⚡</div>
+            <div class="title">فروشگاه اختصاصی VPN_AH</div>
+            <div class="subtitle">خريد پرسرعت ترين كانفيكهاى اختصاصى و امن</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🟢 کانفیگ اختصاصی — ۵ گیگابایت</div>
+            <div class="card-price">۸۰,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="showInvoice('۵ گیگابایت', '۸۰,۰۰۰ تومان')">سفارش و خرید آنی</button>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🟢 کانفیگ اختصاصی — ۱۰ گیگابایت</div>
+            <div class="card-price">۱۲۰,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="showInvoice('۱۰ گیگابایت', '۱۲۰,۰۰۰ تومان')">سفارش و خرید آنی</button>
+        </div>
+
+        <div class="card">
+            <div class="card-title">🟢 کانفیگ اختصاصی — ۲۰ گیگابایت</div>
+            <div class="card-price">۲۰۰,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="showInvoice('۲۰ گیگابایت', '۲۰۰,۰۰۰ تومان')">سفارش و خرید آنی</button>
+        </div>
+    </div>
+
+    
