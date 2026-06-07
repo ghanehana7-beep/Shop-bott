@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPN_AH Cyber Store</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #0d0d11;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .notice-bar {
+            background-color: rgba(255, 215, 0, 0.1);
+            border: 1px solid #ffd700;
+            color: #ffd700;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+        .header { margin-bottom: 25px; }
+        .logo { font-size: 50px; text-shadow: 0 0 20px #39ff14; }
+        .title { font-size: 22px; font-weight: 900; color: #39ff14; margin-top: 10px; }
+        .card {
+            background: linear-gradient(145deg, #141419, #1b1b22);
+            border: 1px solid rgba(57, 255, 20, 0.15);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        .buy-btn {
+            background: linear-gradient(90deg, #1fbf0c, #39ff14);
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+        }
+        #orderModal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #0d0d11;
+            padding: 20px;
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-box {
+            background: #141419;
+            border: 2px solid #39ff14;
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="notice-bar">
+        ⚠️ لطفاً ترجیحاً از ربات برای خرید استفاده کنید، نه اپلیکیشن.
+    </div>
+
+    <div id="mainPage">
+        <div class="header">
+            <div class="logo">⚡</div>
+            <div class="title">فروشگاه VPN_AH</div>
+        </div>
+
+        <div class="card">
+            <div style="font-weight:bold">۵ گیگابایت | ۸۰,۰۰۰ تومان</div>
+            <button class="buy-btn" style="margin-top:10px" onclick="buyPlan('۵ گیگ', '۸۰,۰۰۰ تومان')">خرید آنی</button>
+        </div>
+        <div class="card">
+            <div style="font-weight:bold">۱۰ گیگابایت | ۱۲۰,۰۰۰ تومان</div>
+            <button class="buy-btn" style="margin-top:10px" onclick="buyPlan('۱۰ گیگ', '۱۲۰,۰۰۰ تومان')">خرید آنی</button>
+        </div>
+        <div class="card">
+            <div style="font-weight:bold">۲۰ گیگابایت | ۲۰۰,۰۰۰ تومان</div>
+            <button class="buy-btn" style="margin-top:10px" onclick="buyPlan('۲۰ گیگ', '۲۰۰,۰۰۰ تومان')">خرید آنی</button>
+        </div>
+    </div>
+
+    <div id="orderModal">
+        <div class="modal-box">
+            <h2 style="color: #39ff14;">🧾 فاکتور سفارش</h2>
+            <p id="orderInfo" style="font-weight:bold"></p>
+            <div style="border: 2px dashed #ff3e3e; padding: 10px; border-radius: 10px; color: #ff3e3e; font-size: 14px; font-weight: bold;">
+                پس از پرداخت ، رسید رو از بخش ارتباط با پشتیبانی ، ارسال کنید❤️‍🔥
+            </div>
+            <a href="https://t.me/VPN_AH_bot" id="supportLink" style="display:block; background:#fff; color:#000; padding:12px; border-radius:10px; margin-top:20px; text-decoration:none; font-weight:bold;">ارسال رسید به ربات</a>
+        </div>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+        function buyPlan(volume, price) {
+            document.getElementById('mainPage').style.display = 'none';
+            document.getElementById('orderModal').style.display = 'flex';
+            document.getElementById('orderInfo').innerText = volume + " (" + price + ")";
+        }
+    </script>
+</body>
+</html>
