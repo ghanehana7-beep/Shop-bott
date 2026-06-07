@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPN_AH Cyber Store</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #0d0d11; /* پس‌زمینه مشکی عمیق */
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .header {
+            margin-bottom: 35px;
+            padding: 10px;
+        }
+        .logo {
+            font-size: 55px;
+            text-shadow: 0 0 20px #39ff14;
+            animation: pulse 2s infinite alternate;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: 900;
+            margin-top: 15px;
+            color: #39ff14; /* سبز نئونی خفن */
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            font-size: 13px;
+            color: #888888;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .card {
+            background: linear-gradient(145deg, #141419, #1b1b22);
+            border: 1px solid rgba(57, 255, 20, 0.15); /* خط دور سبز ملایم */
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            border-color: #39ff14;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+            transform: translateY(-2px);
+        }
+        .card-title {
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        .card-price {
+            font-size: 18px;
+            color: #39ff14;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background-color: rgba(57, 255, 20, 0.07);
+            padding: 6px 18px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px dashed rgba(57, 255, 20, 0.3);
+        }
+        .buy-btn {
+            background: linear-gradient(90deg, #1fbf0c, #39ff14);
+            color: #000000; /* متن مشکی روی دکمه سبز برای خوانایی و خفنی */
+            border: none;
+            padding: 14px 25px;
+            border-radius: 12px;
+            font-weight: 900;
+            cursor: pointer;
+            width: 90%;
+            font-size: 16px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(57, 255, 20, 0.4);
+            transition: all 0.2s ease;
+        }
+        .buy-btn:active {
+            transform: scale(0.96);
+            box-shadow: 0 2px 5px rgba(57, 255, 20, 0.2);
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">⚡</div>
+        <div class="title">فروشگاه اختصاصی VPN_AH</div>
+        <div class="subtitle">خريد پرسرعت ترين كانفيكهاى اختصاصى و امن</div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">🟢 کانفیگ اختصاصی — ۵ گیگابایت</div>
+        <div class="card-price">۸۰,۰۰۰ تومان</div>
+        <button class="buy-btn" onclick="buyPlan('۵ گیگ - ۸۰,۰۰۰ تومان')">سفارش و خرید آنی</button>
+    </div>
+
+    <div class="card">
+        <div class="card-title">🟢 کانفیگ اختصاصی — ۱۰ گیگابایت</div>
+        <div class="card-price">۱۲۰,۰۰۰ تومان</div>
+        <button class="buy-btn" onclick="buyPlan('۱۰ گیگ - ۱۲۰,۰۰۰ تومان')">سفارش و خرید آنی</button>
+    </div>
+
+    <div class="card">
+        <div class="card-title">🟢 کانفیگ اختصاصی — ۲۰ گیگابایت</div>
+        <div class="card-price">۲۰۰,۰۰۰ تومان</div>
+        <button class="buy-btn" onclick="buyPlan('۲۰ گیگ - ۲۰۰,۰۰۰ تومان')">سفارش و خرید آنی</button>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        // هماهنگ کردن هدر مینی‌آپ با رنگ مشکی قالب
+        tg.setHeaderColor('#0d0d11');
+        tg.setBackgroundColor('#0d0d11');
+        tg.expand(); 
+
+        function buyPlan(planName) {
+            tg.sendData("درخواست خرید: " + planName);
+            tg.close(); 
+        }
+    </script>
+</body>
+</html>
