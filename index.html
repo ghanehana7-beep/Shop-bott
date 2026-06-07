@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VPN_AH Store</title>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:'Segoe UI',Tahoma,sans-serif;
+    background:#0d0d11;
+    color:#fff;
+    padding:20px;
+    text-align:center;
+}
+
+/* هشدار بالای صفحه */
+.notice-bar{
+    background:rgba(255,215,0,0.08);
+    border:1px solid #ffd700;
+    color:#ffd700;
+    padding:12px;
+    border-radius:12px;
+    margin-bottom:20px;
+    font-weight:bold;
+    text-shadow:0 0 12px #ffd700;
+}
+
+/* هدر */
+.header{
+    margin-bottom:25px;
+}
+
+.logo{
+    font-size:55px;
+    text-shadow:0 0 20px #39ff14;
+}
+
+.title{
+    font-size:24px;
+    font-weight:900;
+    color:#39ff14;
+    margin-top:10px;
+    text-shadow:0 0 10px #39ff14;
+}
+
+/* کارت سرویس */
+.card{
+    background:linear-gradient(145deg,#141419,#1b1b22);
+    border:1px solid rgba(57,255,20,.15);
+    border-radius:16px;
+    padding:18px;
+    margin:15px auto;
+    max-width:450px;
+    box-shadow:0 5px 15px rgba(0,0,0,.5);
+}
+
+.plan-title{
+    font-weight:bold;
+    font-size:18px;
+}
+
+.buy-btn{
+    width:100%;
+    margin-top:12px;
+    border:none;
+    border-radius:10px;
+    padding:12px;
+    cursor:pointer;
+    font-weight:bold;
+    color:#000;
+    background:linear-gradient(90deg,#1fbf0c,#39ff14);
+}
+
+/* مودال */
+#orderModal{
+    display:none;
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background:#0d0d11;
+    z-index:999;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.modal-box{
+    width:100%;
+    max-width:420px;
+    background:#141419;
+    border:2px solid #39ff14;
+    border-radius:20px;
+    padding:25px;
+}
+
+.card-info{
+    margin-top:15px;
+    border:2px solid #39ff14;
+    border-radius:12px;
+    padding:15px;
+    background:rgba(57,255,20,.05);
+}
+
+.card-number{
+    font-size:20px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-top:10px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:12px;
+    border:1px solid #ff3e3e;
+    border-radius:10px;
+    color:#ff3e3e;
+    font-weight:bold;
+    text-shadow:0 0 12px #ff0000;
+}
+
+.receipt-btn{
+    width:100%;
+    margin-top:20px;
+    border:none;
+    border-radius:10px;
+    padding:12px;
+    cursor:pointer;
+    font-weight:bold;
+    color:#000;
+    background:linear-gradient(90deg,#1fbf0c,#39ff14);
+}
+</style>
+</head>
+
+<body>
+
+<div class="notice-bar">
+⚠️ ترجیحا از ربات استفاده شود نه اپلیکیشن
+</div>
+
+<div id="mainPage">
+
+    <div class="header">
+        <div class="logo">⚡</div>
+        <div class="title">فروشگاه VPN_AH</div>
+    </div>
+
+    <div class="card">
+        <div class="plan-title">۵ گیگابایت | ۸۰,۰۰۰ تومان</div>
+        <button class="buy-btn"
+            onclick="buyPlan('۵ گیگابایت','۸۰,۰۰۰ تومان')">
+            خرید آنی
+        </button>
+    </div>
+
+    <div class="card">
+        <div class="plan-title">۱۰ گیگابایت | ۱۲۰,۰۰۰ تومان</div>
+        <button class="buy-btn"
+            onclick="buyPlan('۱۰ گیگابایت','۱۲۰,۰۰۰ تومان')">
+            خرید آنی
+        </button>
+    </div>
+
+    <div class="card">
+        <div class="plan-title">۲۰ گیگابایت | ۲۰۰,۰۰۰ تومان</div>
+        <button class="buy-btn"
+            onclick="buyPlan('۲۰ گیگابایت','۲۰۰,۰۰۰ تومان')">
+            خرید آنی
+        </button>
+    </div>
+
+</div>
+
+<div id="orderModal">
+
+    <div class="modal-box">
+
+        <h2 style="color:#39ff14;">🧾 فاکتور سفارش</h2>
+
+        <p id="orderInfo"
+           style="margin-top:15px;font-size:18px;font-weight:bold;">
+        </p>
+
+        <div class="card-info">
+
+            <div style="color:#39ff14;font-weight:bold;">
+                شماره کارت جهت پرداخت
+            </div>
+
+            <div class="card-number">
+                6104338644728640
+            </div>
+
+            <div style="margin-top:10px;font-weight:bold;">
+                به نام: امیررضا هژبر
+            </div>
+
+        </div>
+
+        <div class="warning">
+            ⚠️ پس از پرداخت رسید را از طریق ارتباط با پشتیبانی ارسال کنید ❤️‍🔥❤️‍🔥
+        </div>
+
+        <button class="receipt-btn"
+                onclick="closeApp()">
+            ارسال رسید
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+const tg = window.Telegram?.WebApp;
+
+if(tg){
+    tg.expand();
+}
+
+function buyPlan(volume, price){
+
+    document.getElementById("mainPage").style.display = "none";
+
+    document.getElementById("orderModal").style.display = "flex";
+
+    document.getElementById("orderInfo").innerText =
+        volume + " | " + price;
+}
+
+function closeApp(){
+
+    if(window.Telegram && Telegram.WebApp){
+        Telegram.WebApp.close();
+    }else{
+        window.close();
+    }
+}
+</script>
+
+</body>
+</ht
